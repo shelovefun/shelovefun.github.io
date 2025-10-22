@@ -1,0 +1,1332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' lang='en'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>Find Your Match (18+) - shelove.fun</title>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+    
+    <b:skin>
+        <![CDATA[/* CSS Code Here */]]>
+    </b:skin>
+    
+    <style>
+        /* All CSS styles from previous code */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff6b9d, #c44569, #6a4c93);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" fill="none"/></svg>');
+            background-size: 100px 100px;
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step {
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .trending-badge {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .profile-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .online-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .free-badge {
+            background: rgba(0, 182, 122, 0.2);
+            color: #00b67a;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            margin: 0 auto 25px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-control option {
+            background: #6a4c93;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .checkbox {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .online-count {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .online-count span {
+            color: #FFD700;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .badge i {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #FFD700;
+        }
+
+        .privacy-notice {
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.7;
+            line-height: 1.4;
+            margin-top: 20px;
+        }
+
+        .terms-notice {
+            text-align: center;
+            font-size: 11px;
+            opacity: 0.6;
+            line-height: 1.4;
+            margin-top: 15px;
+        }
+
+        .reviews-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .reviews-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .trustpilot-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .trustpilot-logo i {
+            color: #00b67a;
+            font-size: 24px;
+        }
+
+        .trustpilot-stars {
+            color: #00b67a;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .trustpilot-score {
+            background: #00b67a;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        .review-container {
+            position: relative;
+            min-height: 180px;
+            overflow: hidden;
+        }
+
+        .review {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.8s ease;
+        }
+
+        .review.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .review.prev {
+            transform: translateX(-100%);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .reviewer-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .reviewer-location {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .review-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stars {
+            color: #00b67a;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .rating-score {
+            background: #00b67a;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .review-text {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .review-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(0, 182, 122, 0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #00b67a;
+            font-weight: 500;
+        }
+
+        .review-verified i {
+            font-size: 10px;
+        }
+
+        .review-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 15px;
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #00b67a;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Verification Styles */
+        .verification-container {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+
+        .verification-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .spinner-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+        }
+
+        .spinner {
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .spinner-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: spin-reverse 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spin-reverse {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+
+        .verification-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: #FFD700;
+            animation: pulse-icon 2s infinite;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        .verification-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verification-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .verification-steps {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .verification-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.3;
+            transition: all 0.5s ease;
+        }
+
+        .verification-step.active {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .verification-step.completed {
+            opacity: 0.7;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .verification-step.active .step-icon {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .verification-step.completed .step-icon {
+            background: rgba(0, 182, 122, 0.2);
+            color: #00b67a;
+        }
+
+        .step-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .verification-details {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #ff6b9d);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 5s linear;
+        }
+
+        .countdown {
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #countdown-timer {
+            font-weight: 700;
+            color: #FFD700;
+            font-size: 24px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        #countdown-dots {
+            display: inline-block;
+            width: 30px;
+            text-align: left;
+        }
+
+        .redirect-message {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -10%;
+            color: rgba(255, 255, 255, 0.3);
+            animation: float-up 10s linear infinite;
+        }
+
+        @keyframes float-up {
+            0% {
+                bottom: -10%;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                bottom: 110%;
+                opacity: 0;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .verification-title {
+                font-size: 24px;
+            }
+            
+            .verification-subtitle {
+                font-size: 16px;
+            }
+            
+            .trust-badges {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .badge {
+                flex-basis: 30%;
+            }
+            
+            .reviews-header {
+                font-size: 14px;
+            }
+            
+            .trustpilot-logo i {
+                font-size: 20px;
+            }
+            
+            .trustpilot-stars {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class='background-overlay'></div>
+    <div class='floating-hearts' id='hearts-container'></div>
+
+    <div class='container'>
+        <div class='card'>
+            <!-- Step 1: Quiz Form -->
+            <div id='step1' class='step active'>
+                <div class='trending-badge'>Trending in Your Area</div>
+                
+                <div class='profile-circle'>
+                    <img src='https://z-cdn-media.chatglm.cn/files/72c34cef-2482-4534-9a4a-03bca3e29da8_photo_2025-10-21_00-12-03.jpg?auth_key=1792694646-36407083e5b74eeea1bcdc93613cb75f-0-43afe527d55e67e4efe80cce4280e527' alt='Profile'/>
+                    <div class='online-indicator'></div>
+                </div>
+                
+                <h1 class='title'>Find Your Match (18+)</h1>
+                <p class='subtitle'>Discover real singles near you for chat, fun, or dating.</p>
+                
+                <div class='free-badge'>100% free to join. No credit card needed!</div>
+                
+                <div class='quiz-form'>
+                    <div class='form-group'>
+                        <label for='looking-for'>What are you looking for?</label>
+                        <select id='looking-for' class='form-control'>
+                            <option value='casual-dating' selected>Casual Dating</option>
+                            <option value='serious-relationship'>Serious Relationship</option>
+                            <option value='friendship'>Friendship</option>
+                            <option value='fun'>Fun</option>
+                        </select>
+                    </div>
+                    
+                    <div class='form-group'>
+                        <label for='age'>Your Age</label>
+                        <select id='age' class='form-control'>
+                            <option value='18-24'>18-24</option>
+                            <option value='25-34' selected>25-34</option>
+                            <option value='35-44'>35-44</option>
+                            <option value='45-54'>45-54</option>
+                            <option value='55+'>55+</option>
+                        </select>
+                    </div>
+                    
+                    <div class='form-group'>
+                        <label for='location'>Your City</label>
+                        <input type='text' id='location' class='form-control' placeholder='Enter your city'/>
+                    </div>
+                    
+                    <div class='checkbox-group'>
+                        <input type='checkbox' id='age-confirm' class='checkbox'/>
+                        <label for='age-confirm'>I confirm I am 18 years old or above</label>
+                    </div>
+                    
+                    <button id='continue-btn' class='btn-primary'>Continue</button>
+                </div>
+                
+                <div class='online-count'><span>2,400+</span> singles online now!</div>
+                
+                <div class='trust-badges'>
+                    <div class='badge'>
+                        <i class='fas fa-gift'></i>
+                        <span>100% Free</span>
+                    </div>
+                    <div class='badge'>
+                        <i class='fas fa-shield-alt'></i>
+                        <span>Secure Verified</span>
+                    </div>
+                    <div class='badge'>
+                        <i class='fas fa-headset'></i>
+                        <span>24/7 Support</span>
+                    </div>
+                </div>
+                
+                <div class='privacy-notice'>Privacy: Your info is safe & never shared.</div>
+                
+                <div class='reviews-section'>
+                    <div class='reviews-header'>
+                        <div class='trustpilot-logo'>
+                            <i class='fab fa-trustpilot'></i>
+                            <span>Trustpilot</span>
+                            <div class='trustpilot-score'>4.8</div>
+                        </div>
+                        <div class='trustpilot-stars'>★★★★★</div>
+                    </div>
+                    
+                    <div class='review-container' id='review-container'>
+                        <!-- Reviews will be dynamically inserted here -->
+                    </div>
+                    
+                    <div class='review-indicators' id='review-indicators'>
+                        <!-- Indicators will be dynamically inserted here -->
+                    </div>
+                </div>
+                
+                <div class='terms-notice'>By clicking "Continue", you agree to our Terms of Service and Privacy Policy. This site is for adults 18+ only.</div>
+            </div>
+            
+            <!-- Step 2: Verification -->
+            <div id='step2' class='step'>
+                <div class='verification-container'>
+                    <div class='verification-wrapper'>
+                        <div class='spinner-container'>
+                            <div class='spinner'></div>
+                            <div class='spinner-inner'></div>
+                            <div class='verification-icon'>
+                                <i class='fas fa-search'></i>
+                            </div>
+                        </div>
+                        
+                        <h2 class='verification-title'>Verifying...</h2>
+                        <p class='verification-subtitle'>Almost done! Finding your perfect matches</p>
+                        
+                        <div class='verification-steps'>
+                            <div class='verification-step' id='step-1'>
+                                <div class='step-icon'>
+                                    <i class='fas fa-user-check'></i>
+                                </div>
+                                <div class='step-label'>Profile Check</div>
+                            </div>
+                            <div class='verification-step' id='step-2'>
+                                <div class='step-icon'>
+                                    <i class='fas fa-map-marker-alt'></i>
+                                </div>
+                                <div class='step-label'>Location Match</div>
+                            </div>
+                            <div class='verification-step' id='step-3'>
+                                <div class='step-icon'>
+                                    <i class='fas fa-heart'></i>
+                                </div>
+                                <div class='step-label'>Find Matches</div>
+                            </div>
+                        </div>
+                        
+                        <div class='verification-details'>
+                            <div class='detail-item'>
+                                <span class='detail-label'>
+                                    <i class='fas fa-search'></i>
+                                    Looking for:
+                                </span>
+                                <span id='verify-looking-for' class='detail-value'></span>
+                            </div>
+                            <div class='detail-item'>
+                                <span class='detail-label'>
+                                    <i class='fas fa-calendar'></i>
+                                    Age Range:
+                                </span>
+                                <span id='verify-age' class='detail-value'></span>
+                            </div>
+                            <div class='detail-item'>
+                                <span class='detail-label'>
+                                    <i class='fas fa-map-pin'></i>
+                                    Location:
+                                </span>
+                                <span id='verify-location' class='detail-value'></span>
+                            </div>
+                        </div>
+                        
+                        <div class='progress-bar'>
+                            <div class='progress-fill' id='progress-fill'></div>
+                        </div>
+                        
+                        <div class='countdown'>
+                            <span>Redirecting in</span>
+                            <span id='countdown-timer'>5</span>
+                            <span id='countdown-dots'>...</span>
+                        </div>
+                        
+                        <div class='redirect-message'>
+                            <i class='fas fa-lock'></i> Secure connection to member area
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //<![CDATA[
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            
+            // Reviews data
+            const reviews = [
+                {
+                    name: "David",
+                    location: "California",
+                    rating: 5,
+                    text: "Finally, a platform where I feel secure. The photo verification system is a must-have. I've been catfished on other sites, but here, I know who I'm talking to is real. It makes all the difference.",
+                    verified: true
+                },
+                {
+                    name: "Sarah",
+                    location: "Florida",
+                    rating: 5,
+                    text: "You can tell the scam prevention works just by looking at the quality of the profiles. People are more willing to be authentic when they know fakes are being filtered out. It leads to much better, more honest interactions.",
+                    verified: true
+                },
+                {
+                    name: "Michael",
+                    location: "Texas",
+                    rating: 5,
+                    text: "What I love most are the built-in safety tips. They remind you not to share financial info and how to spot red flags. It's clear this service cares about its users' well-being beyond just making a connection.",
+                    verified: true
+                },
+                {
+                    name: "James",
+                    location: "New York",
+                    rating: 5,
+                    text: "I've used sites where I'd get sob stories and requests for money within a day. That simply doesn't happen here. The user base seems vetted, and the focus is on actual connection, not financial exploitation. A+ for scam prevention.",
+                    verified: true
+                },
+                {
+                    name: "Chris",
+                    location: "Illinois",
+                    rating: 5,
+                    text: "This service is transparent about its safety measures, which builds a lot of trust. They don't just say they're safe; they show you how. That honesty is why I feel comfortable using this platform for my personal life.",
+                    verified: true
+                },
+                {
+                    name: "Chloe",
+                    location: "Manchester",
+                    rating: 5,
+                    text: "I'm genuinely impressed with how quickly they remove suspicious profiles. On other apps, you see the same fake bots for weeks. Here, the moderation is top-notch. It keeps the experience genuine and safe.",
+                    verified: true
+                },
+                {
+                    name: "Emily",
+                    location: "London",
+                    rating: 5,
+                    text: "The peace of mind here is unmatched. I can focus on having real conversations without constantly worrying if the person on the other end is a scammer. This level of security is so refreshing in the online dating world.",
+                    verified: true
+                },
+                {
+                    name: "Oliver",
+                    location: "Birmingham",
+                    rating: 5,
+                    text: "I had to report a profile that seemed fishy, and the response was incredibly fast. The account was gone within hours. It's reassuring to know the reporting system actually works and is taken seriously.",
+                    verified: true
+                },
+                {
+                    name: "Sophie",
+                    location: "Glasgow",
+                    rating: 5,
+                    text: "I'm so tired of bots on other dating apps. Here, every conversation I've had has been with a real person. The system they have in place to filter out automated accounts is brilliant. Makes the whole experience worthwhile.",
+                    verified: true
+                },
+                {
+                    name: "Harry",
+                    location: "Bristol",
+                    rating: 5,
+                    text: "For an adult dating service, security is paramount. This platform delivers on that promise perfectly. The focus on preventing scams isn't just a feature; it's the foundation of the entire service. Worth it for the safety it provides.",
+                    verified: true
+                }
+            ];
+
+            // Get DOM elements
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const continueBtn = document.getElementById('continue-btn');
+            const ageConfirm = document.getElementById('age-confirm');
+            const lookingFor = document.getElementById('looking-for');
+            const age = document.getElementById('age');
+            const location = document.getElementById('location');
+            const reviewContainer = document.getElementById('review-container');
+            const reviewIndicators = document.getElementById('review-indicators');
+            
+            // Verification elements
+            const verifyLookingFor = document.getElementById('verify-looking-for');
+            const verifyAge = document.getElementById('verify-age');
+            const verifyLocation = document.getElementById('verify-location');
+            const countdownTimer = document.getElementById('countdown-timer');
+            const countdownDots = document.getElementById('countdown-dots');
+            const progressFill = document.getElementById('progress-fill');
+            
+            console.log('All elements found:', {
+                step1: !!step1,
+                step2: !!step2,
+                continueBtn: !!continueBtn,
+                ageConfirm: !!ageConfirm
+            });
+            
+            // Review rotation system
+            let currentReviewIndex = 0;
+            let reviewRotationInterval;
+            let isRotating = true;
+            
+            // Initialize review indicators
+            function initializeIndicators() {
+                reviewIndicators.innerHTML = '';
+                for (let i = 0; i < reviews.length; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'indicator';
+                    if (i === 0) indicator.classList.add('active');
+                    reviewIndicators.appendChild(indicator);
+                }
+            }
+            
+            // Update active indicator
+            function updateIndicators() {
+                const indicators = reviewIndicators.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    if (index === currentReviewIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Create review element
+            function createReviewElement(review) {
+                const reviewDiv = document.createElement('div');
+                reviewDiv.className = 'review';
+                
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                
+                reviewDiv.innerHTML = `
+                    <div class='review-header'>
+                        <div class='reviewer-info'>
+                            <div class='reviewer-avatar'>${review.name.charAt(0)}</div>
+                            <div class='reviewer-details'>
+                                <div class='reviewer-name'>${review.name}</div>
+                                <div class='reviewer-location'>${review.location}</div>
+                            </div>
+                        </div>
+                        <div class='review-rating'>
+                            <div class='stars'>${stars}</div>
+                            <div class='rating-score'>${review.rating}.0</div>
+                        </div>
+                    </div>
+                    <div class='review-text'>${review.text}</div>
+                    ${review.verified ? '<div class="review-verified"><i class="fas fa-check-circle"></i> Verified Review</div>' : ''}
+                `;
+                
+                return reviewDiv;
+            }
+            
+            // Display current review
+            function displayReview(index) {
+                // Clear previous reviews
+                const existingReviews = reviewContainer.querySelectorAll('.review');
+                existingReviews.forEach(review => {
+                    review.classList.remove('active');
+                    review.classList.add('prev');
+                });
+                
+                // Create and add new review
+                const reviewElement = createReviewElement(reviews[index]);
+                reviewContainer.appendChild(reviewElement);
+                
+                // Trigger animation
+                setTimeout(() => {
+                    reviewElement.classList.add('active');
+                }, 50);
+                
+                // Remove old reviews after animation
+                setTimeout(() => {
+                    existingReviews.forEach(review => {
+                        if (review.parentNode) {
+                            review.parentNode.removeChild(review);
+                        }
+                    });
+                }, 800);
+                
+                // Update indicators
+                updateIndicators();
+            }
+            
+            // Rotate to next review
+            function rotateReview() {
+                if (!isRotating) return;
+                
+                currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+                displayReview(currentReviewIndex);
+            }
+            
+            // Start review rotation
+            function startReviewRotation() {
+                // Initialize indicators
+                initializeIndicators();
+                
+                // Display first review
+                displayReview(0);
+                
+                // Set up rotation interval
+                reviewRotationInterval = setInterval(() => {
+                    rotateReview();
+                }, 8000); // Change review every 8 seconds
+            }
+            
+            // Get user's location
+            function getUserLocation() {
+                const cities = [
+                    "New York",
+                    "Los Angeles",
+                    "Chicago",
+                    "Houston",
+                    "Phoenix",
+                    "Philadelphia",
+                    "San Antonio",
+                    "San Diego",
+                    "Dallas",
+                    "San Jose"
+                ];
+                
+                const randomCity = cities[Math.floor(Math.random() * cities.length)];
+                location.value = randomCity;
+            }
+            
+            // Check if all required fields are filled
+            function validateForm() {
+                const isChecked = ageConfirm.checked;
+                const hasLookingFor = lookingFor.value;
+                const hasAge = age.value;
+                const hasLocation = location.value && location.value.trim() !== '';
+                
+                console.log('Validation check:', {
+                    isChecked,
+                    hasLookingFor,
+                    hasAge,
+                    hasLocation,
+                    locationValue: location.value
+                });
+                
+                return isChecked && hasLookingFor && hasAge && hasLocation;
+            }
+            
+            // Enable/disable continue button based on form validation
+            function updateContinueButton() {
+                const isValid = validateForm();
+                continueBtn.disabled = !isValid;
+                console.log('Button updated:', isValid ? 'enabled' : 'disabled');
+            }
+            
+            // Enhanced verification step management
+            function updateVerificationStep(stepNumber) {
+                console.log('Updating verification step to:', stepNumber);
+                
+                // Reset all steps
+                for (let i = 1; i <= 3; i++) {
+                    const step = document.getElementById(`step-${i}`);
+                    if (step) {
+                        step.classList.remove('active', 'completed');
+                        if (i < stepNumber) {
+                            step.classList.add('completed');
+                        } else if (i === stepNumber) {
+                            step.classList.add('active');
+                        }
+                    }
+                }
+            }
+            
+            // Handle continue button click - MAIN FUNCTION
+            function handleContinueClick(e) {
+                e.preventDefault();
+                console.log('Continue button clicked!');
+                
+                if (validateForm()) {
+                    console.log('Form is valid, proceeding...');
+                    
+                    // Stop review rotation
+                    isRotating = false;
+                    clearInterval(reviewRotationInterval);
+                    
+                    // Set verification details
+                    verifyLookingFor.textContent = lookingFor.options[lookingFor.selectedIndex].text;
+                    verifyAge.textContent = age.options[age.selectedIndex].text;
+                    verifyLocation.textContent = location.value;
+                    
+                    console.log('Verification details set');
+                    
+                    // Switch to verification step
+                    step1.classList.remove('active');
+                    step2.classList.add('active');
+                    
+                    console.log('Switched to verification step');
+                    
+                    // Reset progress bar
+                    progressFill.style.width = '0%';
+                    
+                    // Start verification process
+                    setTimeout(() => {
+                        progressFill.style.width = '100%';
+                    }, 100);
+                    
+                    // Step 1: Profile Check
+                    updateVerificationStep(1);
+                    setTimeout(() => {
+                        updateVerificationStep(2);
+                    }, 1500);
+                    
+                    // Step 2: Location Match
+                    setTimeout(() => {
+                        updateVerificationStep(3);
+                    }, 3000);
+                    
+                    // Step 3: Find Matches
+                    setTimeout(() => {
+                        updateVerificationStep(3);
+                    }, 4500);
+                    
+                    // Start countdown
+                    let seconds = 5;
+                    countdownTimer.textContent = seconds;
+                    
+                    // Animate dots
+                    let dots = 0;
+                    const dotsInterval = setInterval(() => {
+                        dots = (dots + 1) % 4;
+                        countdownDots.textContent = '.'.repeat(dots);
+                    }, 500);
+                    
+                    // Countdown timer
+                    const countdownInterval = setInterval(() => {
+                        seconds--;
+                        countdownTimer.textContent = seconds;
+                        console.log('Countdown:', seconds);
+                        
+                        if (seconds <= 0) {
+                            clearInterval(countdownInterval);
+                            clearInterval(dotsInterval);
+                            
+                            console.log('Redirecting...');
+                            
+                            // Redirect to smartlink (replace with actual URL)
+                            window.location.href = "https://example.com/smartlink";
+                        }
+                    }, 1000);
+                } else {
+                    console.log('Form validation failed');
+                    alert('Please fill in all required fields and confirm you are 18+');
+                }
+            }
+            
+            // Add event listeners
+            ageConfirm.addEventListener('change', updateContinueButton);
+            lookingFor.addEventListener('change', updateContinueButton);
+            age.addEventListener('change', updateContinueButton);
+            location.addEventListener('input', updateContinueButton);
+            
+            // Add click event to continue button
+            continueBtn.addEventListener('click', handleContinueClick);
+            
+            // Initialize
+            getUserLocation();
+            updateContinueButton();
+            startReviewRotation();
+            
+            // Create floating hearts
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = Math.random() * 3 + 5 + 's';
+                heart.style.opacity = Math.random() * 0.3 + 0.1;
+                heart.style.fontSize = Math.random() * 10 + 10 + 'px';
+                
+                document.getElementById('hearts-container').appendChild(heart);
+                
+                // Remove heart after animation completes
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }
+            
+            // Create hearts periodically
+            setInterval(createHeart, 3000);
+            
+            // Create initial hearts
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createHeart, i * 1000);
+            }
+            
+            console.log('Initialization complete');
+        });
+        //]]>
+    </script>
+</body>
+</html>
